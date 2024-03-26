@@ -31,13 +31,13 @@ const createUser = (userData) => __awaiter(void 0, void 0, void 0, function* () 
             user.otpExpires = new Date(Date.now() + 3 * 60 * 1000);
             doneTheJob = yield user.save();
             console.log(user, 'modelAlreadyCreated');
-            const accountSid = 'ACd7d83ab5ea0e2dd51b9d58c39ba039f6';
-            const authToken = '3f644f5b305467c977853e23e35f0bfe';
+            const accountSid = process.env.accountSid;
+            const authToken = process.env.authToken;
             const client = require('twilio')(accountSid, authToken);
             client.messages
                 .create({
                 body: `${otp}`,
-                from: '+19303001187',
+                from: `+${process.env.from}`,
                 to: `+91${userData.mobile}`
             });
         }
@@ -46,13 +46,13 @@ const createUser = (userData) => __awaiter(void 0, void 0, void 0, function* () 
             const newUser = new userModel(Object.assign(Object.assign({}, userData), { isBlocked: false, isVerified: false, isAdmin: false, isCreated: new Date(), isUpdated: new Date(), otp: otp, otpExpires: new Date(Date.now() + 3 * 60 * 1000) }));
             doneTheJob = yield newUser.save();
             console.log(newUser, 'model');
-            const accountSid = 'ACd7d83ab5ea0e2dd51b9d58c39ba039f6';
-            const authToken = '3f644f5b305467c977853e23e35f0bfe';
+            const accountSid = process.env.accountSid;
+            const authToken = process.env.authToken;
             const client = require('twilio')(accountSid, authToken);
             client.messages
                 .create({
                 body: `${otp}`,
-                from: '+19303001187',
+                from: `+${process.env.from}`,
                 to: `+91${userData.mobile}`
             });
         }

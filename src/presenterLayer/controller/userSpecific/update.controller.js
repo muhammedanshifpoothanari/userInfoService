@@ -12,11 +12,12 @@ const { updateAbs: wrappedFunctions } = require('../../../domainLayer/useCase/in
 const updateCntrlForRabbitMQ = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log('reached at update user', data);
-        const { id, userName, mobile, userType, state, about, yearOfExperience, operatingStates, operatingRoutes, handledMaterials, accountNumber, } = data.body;
+        const { id, userName, mobile, userType, assetId, state, about, yearOfExperience, operatingStates, operatingRoutes, handledMaterials, accountNumber, } = data.body;
         const newData = {
             id,
             userName,
             mobile,
+            assetId,
             userType,
             state,
             about,

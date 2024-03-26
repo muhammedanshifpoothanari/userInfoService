@@ -15,6 +15,9 @@ const UserInfoSchema = new mongoose_1.Schema({
         type: String,
         enum: ['loadProvider', 'truckOwner'],
     },
+    assetId: {
+        type: String,
+    },
     state: {
         type: String,
     },
