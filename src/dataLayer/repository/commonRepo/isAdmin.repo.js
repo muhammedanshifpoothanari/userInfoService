@@ -9,14 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const { getUserModel: modelToCheckUserIsAdmin } = require('../getUserModel');
-const isAdmin = (email) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!email) {
-        throw new Error('Email was not properly passed to the repository!');
+const isAdmin = (mobile) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!mobile) {
+        throw new Error('Mobile Number was not properly passed to the repository!');
     }
     const userModel = modelToCheckUserIsAdmin();
     try {
         // Find a user with the specified email and isAdmin field set to true
-        const user = yield userModel.findOne({ email, isAdmin: true }).exec();
+        const user = yield userModel.findOne({ mobile, isAdmin: true }).exec();
         if (!user || user.length === 0) {
             // If no matching user is found or the user is not an admin, return false
             return false;

@@ -13,6 +13,7 @@ const createWrapperTocreateUser = require('../utility');
 const createUserAbsExecute = (dependency, data) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('verifyUserByIdAbsUseCase:');
     console.log('dependency:', dependency);
+    console.log(data, '@@@@@@@@@@@@@@@@@@@@@@@');
     const userData = yield dependency(data);
     if (userData === null) {
         return false;

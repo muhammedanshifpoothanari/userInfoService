@@ -4,8 +4,8 @@ const { isAdminUserAbs : wrappedFunction } = require('../../../domainLayer/useCa
 const isAdminCntrl = async (req: Request, res: Response) => {
   try {
     console.log(isAdminCntrl,'hdhdhhdhd');
-    const email: string =req.body.email 
-    const users = await wrappedFunction(email);
+    const mobile: string =req.body.mobile 
+    const users = await wrappedFunction(mobile);
     console.log(users,'hdhdhhdhd');
     if (users) 
       return users;

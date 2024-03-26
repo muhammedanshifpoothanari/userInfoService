@@ -1,18 +1,16 @@
 const { getUserModel: modelToGetUserByName } = require('../getUserModel');
 const getAllByName = async (
-    firstName: string,
-  lastName: string
+        userName: string,
 ) => {
     const userModel = modelToGetUserByName();
     try { 
-    if (!firstName && !lastName) {
+    if (!userName) {
        console.log('name not provided properly');
        
       }
     
       const query = {
-        firstName: firstName || null,
-        lastName: lastName || null,
+        userName: userName || null,
       };
 
         const usersArray = await userModel.find(query).exec();

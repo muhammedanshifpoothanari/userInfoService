@@ -2,23 +2,14 @@ const { createUserAbs: createUserUseCase } = require('../../../dataLayer/reposit
 const  createWrapperTocreateUser  = require('../utility');
 type functionIdToCheckcreateUser = (...args: any[]) => Promise<any>;
 type dataAtCreateUseCase = {
-    firstName: string,
-    lastName: string,
-    mobileNumber: number,
-    email: string,
-    adhaar: number,
-    userType: string,
-    postalCode: number,
-    panchayath: string,
-    city: string,
-    district: string,
-    state: string,
-    country: string,
-    about: string,
+  userName?: String,
+  mobile?: Number,
 }
 const createUserAbsExecute: functionIdToCheckcreateUser = async (dependency: typeof createUserUseCase, data: dataAtCreateUseCase) => {
   console.log('verifyUserByIdAbsUseCase:', );
   console.log('dependency:', dependency);
+  console.log(data,'@@@@@@@@@@@@@@@@@@@@@@@');
+  
   const userData = await dependency(data);
 
   if (userData === null) {

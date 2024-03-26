@@ -1,40 +1,29 @@
-const { createAbs : wrappedFunctionForCreating } = require('../../../domainLayer/useCase/index');
+const { createAbs : wrappedFunctionForCreating,autheriseAbs: wrappedFunctionForAuthering} = require('../../../domainLayer/useCase/index');
 
 
 const setCntrl = async (data:any) => {
   try {
+    console.log(data.body,'!!!!!!!!!!!!');
+    let users = null;
     const {
-        firstName,
-        lastName,
-        mobileNumber,
-        email,
-        adhaar,
-        userType,
-        postalCode,
-        panchayath,
-        city,
-        district,
-        state,
-        country,
-        about,
-    } = data
+      userName,
+      mobile,
+      otp,
+      requestType,
+    } = data.body;
     const newData = {
-        firstName,
-        lastName,
-        mobileNumber,
-        email,
-        adhaar,
-        userType,
-        postalCode,
-        panchayath,
-        city,
-        district,
-        state,
-        country,
-        about,
+      userName,
+      mobile,
+      otp,
+      requestType
     }
-    const users = await wrappedFunctionForCreating(newData);
 
+    if(requestType === 'sendOtp') {
+     users = await wrappedFunctionForCreating(newData);
+    } else {
+      users = await wrappedFunctionForAuthering(newData);
+    }
+    
     if (users) 
       return users;
   return false;

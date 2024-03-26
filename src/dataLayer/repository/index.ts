@@ -1,10 +1,5 @@
 const {getAll: getAllAbs } = require('./commonRepo/getAll.repo');
-const {getAllByCity: getAllByCityAbs } = require('./commonRepo/getAllByCity.repo');
-const {getAllByEmail: getAllByEmailAbs } = require('./commonRepo/getAllByEmail.repo');
-const {getAllByCountry: getAllByCountryAbs } = require('./commonRepo/getAllByCountry.repo');
-const {getAllByDistrict: getAllByDistrictAbs }= require('./commonRepo/getAllByDistrict.repo');
 const {getAllByName: getAllByNameAbs }= require('./commonRepo/getAllByName.repo');
-const {getAllByPanchayath: getAllByPanchayathAbs } = require('./commonRepo/getAllByPanchayath.repo');
 const {getAllByState: getAllByStateAbs } = require('./commonRepo/getAllByState.repo');
 const {getAllByType: getAllByTypeAbs } = require('./commonRepo/getAllByType.repo');
 const {getById: getByIdAbs } = require('./commonRepo/getById.repo');
@@ -16,6 +11,7 @@ const {unVerifyUserById: unVerifyUserByIdAbs } =require('./adminSpecificRepo/unV
 const {verifyUserById: verifyUserByIdAbs } = require('./adminSpecificRepo/verify.repo');
 const {setAdminUserByEmail: setAdminUserByEmailAbs } = require('./adminSpecificRepo/setAdmin.repo');
 
+const {AutheriseUser: autheriseUserAbs} = require('./userSpecificRepo/autherisation.repo');
 const {createUser: createUserAbs } = require('./userSpecificRepo/set.repo');
 const {updateUser :updateUserAbs } =require('./userSpecificRepo/update.repo');
 
@@ -23,12 +19,7 @@ const {updateUser :updateUserAbs } =require('./userSpecificRepo/update.repo');
 
 module.exports ={
     getAllAbs,
-    getAllByCityAbs,
-    getAllByEmailAbs,
-    getAllByCountryAbs,
-    getAllByDistrictAbs,
     getAllByNameAbs,
-    getAllByPanchayathAbs,
     getAllByStateAbs,
     getAllByTypeAbs,
     getByIdAbs,
@@ -38,6 +29,7 @@ module.exports ={
     unVerifyUserByIdAbs,
     verifyUserByIdAbs,
     setAdminUserByEmailAbs,
+    autheriseUserAbs,
     createUserAbs,
     updateUserAbs,
 }

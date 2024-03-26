@@ -1,11 +1,11 @@
 const { getUserModel : modelToGetUserByType } = require('../getUserModel')
-const getAllByType = async (type: string) => {
-    if (!type)
-        throw new Error('Type was not properly passed to the repository!');
+const getAllByType = async (userType: string) => {
+    if (!userType)
+        throw new Error('userType was not properly passed to the repository!');
 
     const userModel = modelToGetUserByType();
     try {
-        const usersArray = await userModel.find({ userType: type }).exec();
+        const usersArray = await userModel.find({ userType: userType }).exec();
         if (!usersArray)
             return false
         return usersArray;

@@ -1,6 +1,8 @@
 const { getAllAbs: getAllUseCase } = require('../../../dataLayer/repository/index'); // Import your dependency
 const createWrapper  = require('../utility');
+
 type functionTypeToGetAllUser = (...args: any[]) => Promise<any>;
+
 const execute: functionTypeToGetAllUser = async (dependency: typeof getAllUseCase) => {
   console.log('getAllUseCase:' );
   console.log('dependency:', dependency);

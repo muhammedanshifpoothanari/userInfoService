@@ -8,26 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const { createAbs: wrappedFunctionForCreating } = require('../../../domainLayer/useCase/index');
+const { createAbs: wrappedFunctionForCreating, autheriseAbs: wrappedFunctionForAuthering } = require('../../../domainLayer/useCase/index');
 const setCntrl = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { firstName, lastName, mobileNumber, email, adhaar, userType, postalCode, panchayath, city, district, state, country, about, } = data;
+        console.log(data.body, '!!!!!!!!!!!!');
+        let users = null;
+        const { userName, mobile, otp, requestType, } = data.body;
         const newData = {
-            firstName,
-            lastName,
-            mobileNumber,
-            email,
-            adhaar,
-            userType,
-            postalCode,
-            panchayath,
-            city,
-            district,
-            state,
-            country,
-            about,
+            userName,
+            mobile,
+            otp,
+            requestType
         };
-        const users = yield wrappedFunctionForCreating(newData);
+        if (requestType === 'sendOtp') {
+            users = yield wrappedFunctionForCreating(newData);
+        }
+        else {
+            users = yield wrappedFunctionForAuthering(newData);
+        }
         if (users)
             return users;
         return false;

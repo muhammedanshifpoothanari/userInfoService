@@ -9,15 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const { getUserModel: modelToGetUserByName } = require('../getUserModel');
-const getAllByName = (firstName, lastName) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllByName = (userName) => __awaiter(void 0, void 0, void 0, function* () {
     const userModel = modelToGetUserByName();
     try {
-        if (!firstName && !lastName) {
+        if (!userName) {
             console.log('name not provided properly');
         }
         const query = {
-            firstName: firstName || null,
-            lastName: lastName || null,
+            userName: userName || null,
         };
         const usersArray = yield userModel.find(query).exec();
         if (usersArray.length === 0) {

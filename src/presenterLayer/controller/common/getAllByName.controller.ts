@@ -4,9 +4,8 @@ const { getAllByNameUserAbs : wrappedFunction } = require('../../../domainLayer/
 const getAllByNameCntrl = async (req: Request, res: Response) => {
   try {
     console.log(getAllByNameCntrl,'hdhdhhdhd');
-    const firstName: string =req.body.firstName;
-    const lastName: string =req.body.lastName;
-    const users = await wrappedFunction(firstName,lastName);
+    const userName: string =req.body.userName;
+    const users = await wrappedFunction(userName);
     console.log(users,'hdhdhhdhd');
     if (users) 
       return users

@@ -2,20 +2,21 @@ import mongoose, { Model } from 'mongoose';
 
 // Define the user schema type (assuming it matches your schema)
 interface UserSchema {
-    mobileNumber: Number,
-    email: String,
-    adhaar: Number,
-    userType: String,
-    panchayath: String,
-    city: String,
-    postalCode: String,
-    district: String,
-    state: String,
-    country: String,
-    about: String,
-    isBlocked: Boolean,
-    isVerified: Boolean,
-    CreatedAt: Date
+    _id?: string,
+    userName?: String,
+    mobile?: Number,
+    userType?: String,
+    state?: String,
+    about?: String,
+    yearOfExperience?: Number,
+    operatingStates?: string[], 
+    operatingRoutes?: string[], 
+    handledMaterials?: string[],
+    accountNumber?: String,
+    isBlocked?: Boolean,
+    isVerified?: Boolean,
+    isAdmin?: Boolean,
+    CreatedAt?: Date
 }
 
 // Create a Mongoose model for the user

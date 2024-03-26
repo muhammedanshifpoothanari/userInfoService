@@ -10,15 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const { getUserModel: modelToUpdateUser } = require('../getUserModel');
 // Define a function to update user information
-const updateUser = (email, updatedUserData) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(email, updatedUserData, 'jhjgvfreer');
-    if (!email || !updatedUserData) {
-        throw new Error('Email and updated user data must be provided!');
+const updateUser = (id, updatedUserData) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(id, updatedUserData, 'jhjgvfreer');
+    if (!id || !updatedUserData) {
+        throw new Error('id and updated user data must be provided!');
     }
     const userModel = modelToUpdateUser();
     try {
         // Find the user by email
-        const user = yield userModel.findOne({ email: email }).exec();
+        const user = yield userModel.findOne({ _id: id }).exec();
         if (!user) {
             throw new Error('User not found in the database!');
         }

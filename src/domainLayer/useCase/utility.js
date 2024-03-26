@@ -9,11 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 module.exports = (dependency, execute) => {
-    console.log('reached at utility');
     if (!dependency) {
         return false;
     }
-    console.log('reached at utility');
     return (...args) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const result = yield execute(dependency, ...args);

@@ -2,38 +2,36 @@ const { updateAbs: wrappedFunctions } = require('../../../domainLayer/useCase/in
 
 const updateCntrlForRabbitMQ = async (data:any) => {
   try {
+    console.log('reached at update user',data);
+    
     const {
-      _id,
-      firstName,
-      lastName,
-      mobileNumber,
-      email,
-      adhaar,
+      id,
+      userName,
+      mobile,
       userType,
-      postalCode,
-      panchayath,
-      city,
-      district,
+      assetId,
       state,
-      country,
       about,
-    } = data;
+      yearOfExperience,
+      operatingStates,
+      operatingRoutes,
+      handledMaterials,
+      accountNumber,
+    } = data.body;
 
     const newData = {
-      _id,
-      firstName,
-      lastName,
-      mobileNumber,
-      email,
-      adhaar,
+      id,
+      userName,
+      mobile,
+      assetId,
       userType,
-      postalCode,
-      panchayath,
-      city,
-      district,
       state,
-      country,
       about,
+      yearOfExperience,
+      operatingStates,
+      operatingRoutes,
+      handledMaterials,
+      accountNumber,
     };
 
     const users = await wrappedFunctions(newData);

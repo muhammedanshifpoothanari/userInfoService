@@ -13,8 +13,8 @@ const { isAdminUserAbs: wrappedFunction } = require('../../../domainLayer/useCas
 const isAdminCntrl = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(isAdminCntrl, 'hdhdhhdhd');
-        const email = req.body.email;
-        const users = yield wrappedFunction(email);
+        const mobile = req.body.mobile;
+        const users = yield wrappedFunction(mobile);
         console.log(users, 'hdhdhhdhd');
         if (users)
             return users;

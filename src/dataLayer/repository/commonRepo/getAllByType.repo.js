@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const { getUserModel: modelToGetUserByType } = require('../getUserModel');
-const getAllByType = (type) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!type)
-        throw new Error('Type was not properly passed to the repository!');
+const getAllByType = (userType) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!userType)
+        throw new Error('userType was not properly passed to the repository!');
     const userModel = modelToGetUserByType();
     try {
-        const usersArray = yield userModel.find({ userType: type }).exec();
+        const usersArray = yield userModel.find({ userType: userType }).exec();
         if (!usersArray)
             return false;
         return usersArray;

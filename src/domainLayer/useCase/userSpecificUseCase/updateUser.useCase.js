@@ -8,14 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const { updateUserAbs: updateUserUseCase } = require('../../../dataLayer/repository/index'); // Import your dependency
 const createWrapperToupdateUser = require('../utility');
 const updateUserAbsExecute = (dependency, data) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('verifyUserByIdAbsUseCase:');
     console.log('dependency:', dependency);
-    const email = data.email;
+    const id = data.id;
     console.log(data, 'at usecase');
-    const userData = yield dependency(email, data);
+    const userData = yield dependency(id, data);
     if (userData === null) {
         return false;
     }

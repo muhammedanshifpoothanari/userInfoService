@@ -13,9 +13,8 @@ const { getAllByNameUserAbs: wrappedFunction } = require('../../../domainLayer/u
 const getAllByNameCntrl = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(getAllByNameCntrl, 'hdhdhhdhd');
-        const firstName = req.body.firstName;
-        const lastName = req.body.lastName;
-        const users = yield wrappedFunction(firstName, lastName);
+        const userName = req.body.userName;
+        const users = yield wrappedFunction(userName);
         console.log(users, 'hdhdhhdhd');
         if (users)
             return users;

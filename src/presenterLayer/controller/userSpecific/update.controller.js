@@ -11,22 +11,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const { updateAbs: wrappedFunctions } = require('../../../domainLayer/useCase/index');
 const updateCntrlForRabbitMQ = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { _id, firstName, lastName, mobileNumber, email, adhaar, userType, postalCode, panchayath, city, district, state, country, about, } = data;
+        console.log('reached at update user', data);
+        const { id, userName, mobile, userType, state, about, yearOfExperience, operatingStates, operatingRoutes, handledMaterials, accountNumber, } = data.body;
         const newData = {
-            _id,
-            firstName,
-            lastName,
-            mobileNumber,
-            email,
-            adhaar,
+            id,
+            userName,
+            mobile,
             userType,
-            postalCode,
-            panchayath,
-            city,
-            district,
             state,
-            country,
             about,
+            yearOfExperience,
+            operatingStates,
+            operatingRoutes,
+            handledMaterials,
+            accountNumber,
         };
         const users = yield wrappedFunctions(newData);
         return users || false;

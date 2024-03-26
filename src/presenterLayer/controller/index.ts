@@ -1,10 +1,5 @@
 const {getAllCntrl: getAllCntrlAbs } = require('./common/getAll.controller');
-const {getAllByCityCntrl: getAllByCityCntrlAbs } = require('./common/getAllByCity.controller');
-const {getAllByEmailCntrl: getAllByEmailCntrlAbs } = require('./common/getAllByEmail.controller');
-const {getAllByCountryCntrl: getAllByCountryCntrlAbs } = require('./common/getAllByCountry.controller');
-const {getAllByDistrictCntrl: getAllByDistrictCntrlAbs } = require('./common/getAllByDistrict.controller');
 const {getAllByNameCntrl: getAllByNameCntrlAbs } = require('./common/getAllByName.controller');
-const {getAllByPanchayathCntrl: getAllByPanchayathCntrlAbs } = require('./common/getAllByPanchayath.controller');
 const {getAllByStateCntrl: getAllByStateCntrlAbs } = require('./common/getAllByStateUseCase.controller');
 const {getAllByTypeCntrl: getAllByTypeCntrlAbs } = require('./common/getAllByType.controller');
 const {getByIdCntrl: getByIdCntrlAbs } = require('./common/getById.controller');
@@ -18,16 +13,11 @@ const {verifyByIdCntrl: verifyByIdCntrlAbs } = require('./adminSpecific/verifyBy
 
 
 const {setCntrl: setCntrlAbs } = require('./userSpecific/create.controller');
-const {updateCntrl: updateCntrlAbs } = require( './userSpecific/update.controller');
+const {updateCntrlForRabbitMQ: updateCntrlAbs } = require( './userSpecific/update.controller');
 
 module.exports = {
     getAllCntrlAbs,
-    getAllByCityCntrlAbs,
-    getAllByEmailCntrlAbs,
-    getAllByCountryCntrlAbs,
-    getAllByDistrictCntrlAbs,
     getAllByNameCntrlAbs,
-    getAllByPanchayathCntrlAbs,
     getAllByStateCntrlAbs,
     getAllByTypeCntrlAbs,
     getByIdCntrlAbs,

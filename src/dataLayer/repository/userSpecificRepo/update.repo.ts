@@ -1,37 +1,33 @@
 const { getUserModel: modelToUpdateUser } = require('../getUserModel');
 
 type userDataToUpdate = {
-  firstName: string;
-  lastName: string;
-  mobileNumber: number;
-  email: string;
-  adhaar: number;
-  userType: string;
-  postalCode: number;
-  panchayath: string;
-  city: string;
-  district: string;
-  state: string;
-  country: string;
-  about: string;
-  isBlocked: boolean;
-  isVerified: boolean;
-  isAdmin: boolean;
-};
+  id?: string,
+  userName?: String,
+  mobile?: Number,
+  assetId: String,
+  userType?: String,
+  state?: String,
+  about?: String,
+  yearOfExperience?: Number,
+  operatingStates?: string[], 
+  operatingRoutes?: string[], 
+  handledMaterials?: string[],
+  accountNumber?: String,
+}
 
 // Define a function to update user information
-const updateUser = async (email: string, updatedUserData: userDataToUpdate) => {
-  console.log(email,updatedUserData,'jhjgvfreer');
+const updateUser = async (id: String, updatedUserData: userDataToUpdate) => {
+  console.log(id,updatedUserData,'jhjgvfreer');
   
-  if (!email || !updatedUserData) {
-    throw new Error('Email and updated user data must be provided!');
+  if (!id || !updatedUserData) {
+    throw new Error('id and updated user data must be provided!');
   }
 
   const userModel = modelToUpdateUser();
 
   try {
     // Find the user by email
-    const user = await userModel.findOne({ email: email }).exec();
+    const user = await userModel.findOne({ _id: id }).exec();
 
     if (!user) {
       throw new Error('User not found in the database!');

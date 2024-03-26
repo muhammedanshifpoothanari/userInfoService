@@ -1,39 +1,80 @@
+require('dotenv').config();
 const { getUserModel: modelToCreateUser } = require('../getUserModel');
 type userDataToSet = {
-    firstName: string,
-    lastName: string,
-    mobileNumber: number,
-    email: string,
-    adhaar: number,
-    userType: string,
-    postalCode: number,
-    panchayath: string,
-    city: string,
-    district: string,
-    state: string,
-    country: string,
-    about: string,
+  userName?: String,
+  mobile?: Number,
 }
+
+const generateOTP = (): string => {
+  const otpLength = 6;
+  const min = Math.pow(10, otpLength - 1);
+  const max = Math.pow(10, otpLength) - 1;
+  return Math.floor(Math.random() * (max - min + 1) + min).toString();
+};
+
+
+
 const createUser = async (userData: userDataToSet) => {
-  if (!userData || !userData.email) {
-    throw new Error('Email was not properly passed to the repository!');
+  if (!userData || !userData.mobile) {
+    console.log(userData);
+    
+    throw new Error('mobile was not properly passed to the repository!');
   }
-
+  
   const userModel = modelToCreateUser();
-
   try {
-    // Create a new user document with the provided data, including the isAdmin field
-    const newUser = new userModel({
-        ...userData,
-        isBlocked: false,
-        isVerified: false,
-        isAdmin: false,
-        isCreated : new Date(),
-        isUpdated : new Date()
-    });
+    let doneTheJob = false;
+  const user = await userModel.findOne({ userName: userData.userName,mobile: userData.mobile}).exec();
 
-    // Save the new user to the database
-    const doneTheJob =await newUser.save();
+  if(user) {
+   const otp =  generateOTP()
+   user.otp = otp;
+   user.otpExpires = new Date(Date.now() + 3 * 60 * 1000);
+
+   doneTheJob = await user.save();
+   console.log(user,'modelAlreadyCreated');
+   const accountSid = 'ACd7d83ab5ea0e2dd51b9d58c39ba039f6';
+   const authToken = '3f644f5b305467c977853e23e35f0bfe';
+   const client = require('twilio')(accountSid, authToken);
+   
+    client.messages
+       .create({
+        body: `${otp}`,
+                   from: '+19303001187',
+           to: `+91${userData.mobile}`
+       })
+     
+  } else {
+    const otp =  generateOTP()
+
+    const newUser = new userModel({
+      ...userData,
+      isBlocked: false,
+      isVerified: false,
+      isAdmin: false,
+      isCreated : new Date(),
+      isUpdated : new Date(),
+      otp: otp,
+      otpExpires: new Date(Date.now() + 3 * 60 * 1000),
+  });
+
+
+   doneTheJob =await newUser.save();
+   console.log(newUser,'model');
+   const accountSid = 'ACd7d83ab5ea0e2dd51b9d58c39ba039f6';
+   const authToken = '3f644f5b305467c977853e23e35f0bfe';
+   const client = require('twilio')(accountSid, authToken);
+   
+    client.messages
+       .create({
+        body: `${otp}`,
+                   from: '+19303001187',
+           to: `+91${userData.mobile}`
+       })
+
+  }
+    // Create a new user document with the provided data, including the isAdmin field
+  
     if(!doneTheJob)
     return false;
     // Return the newly created user

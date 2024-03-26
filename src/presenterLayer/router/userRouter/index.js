@@ -11,12 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const { getAllCntrlAbs: getAllRouter } = require('../../controller/index');
-const { getAllByCityCntrlAbs: getAllByCityRouter } = require('../../controller/index');
-const { getAllByEmailCntrlAbs: getAllByEmailRouter } = require('../../controller/index');
-const { getAllByCountryCntrlAbs: getAllByCountryRouter } = require('../../controller/index');
-const { getAllByDistrictCntrlAbs: getAllByDistrictRouter } = require('../../controller/index');
 const { getAllByNameCntrlAbs: getAllByNameRouter } = require('../../controller/index');
-const { getAllByPanchayathCntrlAbs: getAllByPanchayathRouter } = require('../../controller/index');
 const { getAllByStateCntrlAbs: getAllByStateRouter } = require('../../controller/index');
 const { getAllByTypeCntrlAbs: getAllByTypeRouter } = require('../../controller/index');
 const { getByIdCntrlAbs: getByIdRouter } = require('../../controller/index');
@@ -39,18 +34,13 @@ const asyncErrorHandler = (fn) => (req, res, next) => __awaiter(void 0, void 0, 
 });
 const routes = [
     { path: '/users', method: 'GET', fn: getAllRouter },
-    { path: '/users/byCity', method: 'POST', fn: getAllByCityRouter },
-    { path: '/users/byEmail', method: 'POST', fn: getAllByEmailRouter },
-    { path: '/users/byCountry', method: 'GET', fn: getAllByCountryRouter },
-    { path: '/users/byDistrict', method: 'GET', fn: getAllByDistrictRouter },
-    { path: '/users/byName', method: 'GET', fn: getAllByNameRouter },
-    { path: '/users/byPanchayath', method: 'GET', fn: getAllByPanchayathRouter },
+    { path: '/users/byName', method: 'POST', fn: getAllByNameRouter },
     { path: '/users/ByState', method: 'GET', fn: getAllByStateRouter },
     { path: '/users/ByType', method: 'GET', fn: getAllByTypeRouter },
     { path: '/users/:id', method: 'GET', fn: getByIdRouter },
     { path: '/users/isAdmin', method: 'POST', fn: isAdminCntrlAbs },
     { path: '/users/set', method: 'POST', fn: setRouter },
-    { path: '/users/update/:id', method: 'POST', fn: updateRouter },
+    { path: '/users/update', method: 'POST', fn: updateRouter },
 ];
 for (const route of routes) {
     const { path, fn } = route;
