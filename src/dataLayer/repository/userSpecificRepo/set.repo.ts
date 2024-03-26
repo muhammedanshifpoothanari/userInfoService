@@ -33,14 +33,14 @@ const createUser = async (userData: userDataToSet) => {
 
    doneTheJob = await user.save();
    console.log(user,'modelAlreadyCreated');
-   const accountSid = 'ACd7d83ab5ea0e2dd51b9d58c39ba039f6';
-   const authToken = '3f644f5b305467c977853e23e35f0bfe';
+   const accountSid = process.env.accountSid;
+   const authToken = process.env.authToken;
    const client = require('twilio')(accountSid, authToken);
    
     client.messages
        .create({
         body: `${otp}`,
-                   from: '+19303001187',
+                   from: `+${process.env.from}`,
            to: `+91${userData.mobile}`
        })
      
@@ -61,15 +61,15 @@ const createUser = async (userData: userDataToSet) => {
 
    doneTheJob =await newUser.save();
    console.log(newUser,'model');
-   const accountSid = 'ACd7d83ab5ea0e2dd51b9d58c39ba039f6';
-   const authToken = '3f644f5b305467c977853e23e35f0bfe';
+   const accountSid = process.env.accountSid;
+   const authToken = process.env.authToken;
    const client = require('twilio')(accountSid, authToken);
    
     client.messages
        .create({
         body: `${otp}`,
-                   from: '+19303001187',
-           to: `+91${userData.mobile}`
+        from: `+${process.env.from}`,
+        to: `+91${userData.mobile}`
        })
 
   }
